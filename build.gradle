@@ -45,7 +45,7 @@ repositories {
 apply plugin: 'forge'
 group = "com.nincraft.ninsticmodifiers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 
-archivesBaseName = "modid"
+archivesBaseName = "ninticmodifiers"
 
 ext.configFile = file "build.properties"
 
