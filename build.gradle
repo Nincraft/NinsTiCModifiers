@@ -15,7 +15,44 @@ buildscript {
     }
 }
 
+repositories {
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven { // the repo from which to get NEI and stuff 
+        name 'CB Repo'
+        url "http://chickenbones.net/maven/"
+    }
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+    maven {
+        name = "IGW"
+        url = "http://maven.k-4u.nl/"
+    }
+    maven {
+        name 'OpenComputers'
+        url = "http://maven.cil.li/"
+    }
+    maven {
+        name 'DVS1 Maven FS'
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+}
+
 apply plugin: 'forge'
+group = 'nincraft'
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // Load config.  It shall from now be referenced as simple config or poject.config
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
 
 version = "1.7.10-0.0.1"
 group= "com.nincraft.ninsticmodifiers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -39,6 +76,12 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    
+    compile "codechicken:CodeChickenLib:${config.minecraft_version}-${config.cclib_version}:dev"
+    compile "codechicken:CodeChickenCore:${config.minecraft_version}-${config.cccore_version}:dev"
+    compile "codechicken:NotEnoughItems:${config.minecraft_version}-${config.nei_version}:dev"
+    compile "mcp.mobius.waila:Waila:${config.waila_version}_${config.minecraft_version}"
+    compile "tconstruct:TConstruct:${config.minecraft_version}-${config.tconstruct_version}:deobf"
 
 }
 
