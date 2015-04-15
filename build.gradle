@@ -43,7 +43,9 @@ repositories {
 }
 
 apply plugin: 'forge'
-group = 'nincraft'
+group = "com.nincraft.ninsticmodifiers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+
+archivesBaseName = "modid"
 
 ext.configFile = file "build.properties"
 
@@ -54,12 +56,8 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-version = "1.7.10-0.0.1"
-group= "com.nincraft.ninsticmodifiers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
-
 minecraft {
-    version = "1.7.10-10.13.2.1291"
+    version = "${config.minecraft_version}-${config.forge_version}"
     runDir = "eclipse"
 }
 
@@ -76,7 +74,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    
+
     compile "codechicken:CodeChickenLib:${config.minecraft_version}-${config.cclib_version}:dev"
     compile "codechicken:CodeChickenCore:${config.minecraft_version}-${config.cccore_version}:dev"
     compile "codechicken:NotEnoughItems:${config.minecraft_version}-${config.nei_version}:dev"
