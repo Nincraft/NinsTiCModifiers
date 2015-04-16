@@ -3,8 +3,8 @@
   "modid": "NinTiCModifiers",
   "name": "Nin's TiC Modifiers",
   "description": "Allow modifications of Tinkers' Construct modifiers.",
-  "version": "1.7.10-0.0.1",
-  "mcversion": "1.7.10",
+  "version": "${minecraft_version}-${mod_version}",
+  "mcversion": "${minecraft_version}",
   "url": "http://nincraft.com",
   "updateUrl": "",
   "authorList": [

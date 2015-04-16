@@ -52,7 +52,7 @@ configFile.withReader {
 }
 
 apply plugin: 'forge'
-version = config.mod_version
+version = "${config.minecraft_version}-${config.mod_version}"
 group = "com.nincraft.ninsticmodifiers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ninticmodifiers"
 
