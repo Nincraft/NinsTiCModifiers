@@ -52,19 +52,21 @@ configFile.withReader {
 }
 
 apply plugin: 'forge'
-version = "${config.minecraft_version}-${config.mod_version}"
+version = config.mod_version
 group = "com.nincraft.ninsticmodifiers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ninticmodifiers"
 
 
 minecraft {
-    version = "${config.minecraft_version}-${config.forge_version}"
+    version = config.minecraft_version + "-" + config.forge_version
     runDir = "eclipse"
     
     replaceIn "reference/Reference.java"
     replace "@MINECRAFT_VERSION@", "${config.minecraft_version}"
     replace "@MOD_VERSION@", "${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
 }
+
+version = "${config.minecraft_version}-${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
 
 dependencies {
     // you may put jars on which you depend on in ./libs
